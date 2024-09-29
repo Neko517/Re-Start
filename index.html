@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="http://restart-tver.ru/wp-content/uploads/2017/02/пакет-макет.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="http://restart-tver.ru/wp-content/uploads/2017/02/пакет-макет.png" type="image/x-icon"> <!-- Логотип -->
+    <link rel="stylesheet" href="style.css"> <!-- Подключение CSS файла -->
+    <title>Re-Старт</title>
 </head>
 <body>
 
@@ -25,61 +26,53 @@
         
         <div class="iphone-list">
             <div class="iphone-item">
-                <img src="https://4pda.to/s/as6yyjbFJ5HdoyA6vovDAaez2hOk0alEz0jJS9emlwryVfwGhnXq.jpg" alt="iPhone 15 Pro">
+                <img src="https://4pda.to/s/as6yyjbFJ5HdoyA6vovDAaez2hOk0alEz0jJS9emlwryVfwGhnXq.jpg">
                 <h3>iPhone 15 Pro</h3>
                 <p>Топовая модель 2024 года.</p>
                 <p class="price">Цена: $1299</p>
             </div>
-
             <div class="iphone-item">
-                <img src="https://4pda.to/s/as6yyfTxBKz1i5IDxSpsyrseihhgkX4ieC0IIofmgTOb0Tijz1Pu.jpg" alt="iPhone 15">
+                <img src="https://4pda.to/s/as6yyfTxBKz1i5IDxSpsyrseihhgkX4ieC0IIofmgTOb0Tijz1Pu.jpg">
                 <h3>iPhone 15</h3>
                 <p>Отличный выбор с новейшими функциями.</p>
                 <p class="price">Цена: $999</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyvz0gFPpuWyyXbSUvk0uYz0tmz2P86G7fPWlynfRtDa7roEXK.jpg" alt="iPhone 14 Pro">
                 <h3>iPhone 14 Pro</h3>
                 <p>Продвинутый флагман 2023 года.</p>
                 <p class="price">Цена: $1199</p>
             </div>
-
             <div class="iphone-item">
-                <img src="https://4pda.to/s/as6yyDLDp7Sefl0CfUL5L8ez2AJ02KqWFtnbcW4z0t8Pc6o4fq8J.jpg" alt="iPhone 14">
+                <img src="https://4pda.to/s/as6yyDLDp7Sefl0CfUL5L8ez2AJ02KqWFtnbcW4z0t8Pc6o4fq8J.jpg">
                 <h3>iPhone 14</h3>
                 <p>Мощный смартфон с отличной камерой.</p>
                 <p class="price">Цена: $899</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyvz0gFPpuWyyXbSUvk0uYz0tmz2P86G7fPWlynfRtDa7roEXK.jpg" alt="iPhone 13 Pro">
                 <h3>iPhone 13 Pro</h3>
                 <p>Прошлогодний флагман.</p>
                 <p class="price">Цена: $1099</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyDLDp7Sefl0CfUL5L8ez2AJ02KqWFtnbcW4z0t8Pc6o4fq8J.jpg" alt="iPhone 13">
                 <h3>iPhone 13</h3>
                 <p>Отличный выбор по разумной цене.</p>
                 <p class="price">Цена: $799</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyjLkZCz1bJXf8YK8osaBk7SdGX1dwm3dPWaDlKlnY8Dz1GIA.jpg" alt="iPhone 12 Pro">
                 <h3>iPhone 12 Pro</h3>
                 <p>Флагманская модель 2021 года.</p>
                 <p class="price">Цена: $999</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyrrrxj3nNqMXbesPY0dfi5nGC3ayVh33Phr3w4Jt9k8dcO.jpg" alt="iPhone 12">
                 <h3>iPhone 12</h3>
                 <p>Надежный и мощный телефон.</p>
                 <p class="price">Цена: $699</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyDLEmtEz0Fp691gz2F1yW2LRBBPn3T5z27fuuR8e9kIm10p4D.jpg" alt="iPhone SE">
                 <h3>iPhone SE (2022)</h3>
@@ -91,20 +84,52 @@
 
     <section class="comment-section">
         <h2>Оставьте свой отзыв</h2>
-        <form class="comment-form" action="comments.php" method="post">
-            <input type="text" name="name" placeholder="Ваше имя" required>
-            <textarea name="comment" rows="4" placeholder="Ваш отзыв" required></textarea>
+        <form class="comment-form" id="commentForm">
+            <input type="text" id="name" placeholder="Ваше имя" required>
+            <textarea id="comment" rows="4" placeholder="Ваш отзыв" required></textarea>
             <button type="submit">Отправить</button>
         </form>
-        <div class="comments">
-            <?php include 'comments.php'; ?>
-        </div>
+        <div id="comments"></div>
     </section>
 </main>
 
 <footer>
     <p>&copy; 2024 Re-Старт for Talgar Azat</p>
 </footer>
+
+<script>
+    // Функция для сохранения комментариев
+    function saveComment(name, comment) {
+        const comments = JSON.parse(localStorage.getItem('comments')) || [];
+        comments.push({ name, comment });
+        localStorage.setItem('comments', JSON.stringify(comments));
+        displayComments();
+    }
+
+    // Функция для отображения комментариев
+    function displayComments() {
+        const commentsDiv = document.getElementById('comments');
+        commentsDiv.innerHTML = '';
+        const comments = JSON.parse(localStorage.getItem('comments')) || [];
+        comments.forEach(c => {
+            const commentElement = document.createElement('div');
+            commentElement.innerHTML = `<strong>${c.name}</strong>: ${c.comment}`;
+            commentsDiv.appendChild(commentElement);
+        });
+    }
+
+    // Обработчик формы
+    document.getElementById('commentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const comment = document.getElementById('comment').value;
+        saveComment(name, comment);
+        this.reset(); // Сброс формы после отправки
+    });
+
+    // Отображение комментариев при загрузке страницы
+    window.onload = displayComments;
+</script>
 
 </body>
 </html>
