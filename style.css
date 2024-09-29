@@ -52,97 +52,64 @@ main {
 footer {
     background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; /* Фон для подвала */
     background-size: cover;
-    color: black; /* Черный цвет текста в подвале */
+    color: white; /* Белый цвет текста */
+    padding: 10px;
     text-align: center;
-    padding: 5px 0; /* Уменьшено */
-    position: relative; /* Теперь относительное */
-    width: 100%;
 }
 
 .iphone-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Гибкое количество колонок */
+    gap: 20px;
+    margin-top: 20px; /* Увеличен отступ сверху */
 }
 
 .iphone-item {
-    background-color: white; /* Фон для элементов iPhone */
-    padding: 15px;
-    margin: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 200px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    color: black; /* Чтобы текст внутри карточек был черным */
+    border: 1px solid #ddd; /* Добавлена граница */
+    border-radius: 5px; /* Закругление углов */
+    overflow: hidden; /* Обрезка изображений */
+    background-color: #fff; /* Белый фон для элементов */
 }
 
 .iphone-item img {
-    max-width: 100%;
-    height: auto;
+    width: 100%; /* Ширина изображений на 100% */
+    height: auto; /* Автоматическая высота */
 }
 
-.iphone-item h3 {
-    margin: 10px 0;
-}
-
-.iphone-item p {
-    margin: 5px 0;
-}
-
-.iphone-item .price {
-    color: green;
-    font-weight: bold;
-}
-
-/* Стиль для секции приветствия */
-#home {
-    background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; /* Фон для секции приветствия */
-    background-size: cover;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-#home h2, #home p {
-    color: black; /* Черный цвет текста заголовка и абзаца */
-}
-
-/* Стиль для комментариев */
 .comment-section {
-    margin-top: 40px;
-    background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; /* Новый фон для секции комментариев */
-    background-size: cover;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.comment-section h2 {
-    margin-bottom: 10px;
-    color: black; /* Черный цвет заголовка секции комментариев */
+    margin-top: 40px; /* Увеличен отступ сверху для комментариев */
+    background: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон для секции комментариев */
+    padding: 20px; /* Добавлено внутреннее поле */
+    border-radius: 5px; /* Закругление углов */
 }
 
 .comment-form {
-    margin: 15px 0;
+    margin-bottom: 20px; /* Отступ снизу для формы комментариев */
 }
 
-.comment-form input, .comment-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: none;
-    border-radius: 5px;
+.comment-form input,
+.comment-form textarea {
+    width: 100%; /* Ширина на 100% */
+    padding: 10px; /* Внутренние отступы */
+    margin: 10px 0; /* Отступы сверху и снизу */
+    border: 1px solid #ccc; /* Граница */
+    border-radius: 5px; /* Закругление углов */
 }
 
 .comment-form button {
-    background-color: black; /* Черная кнопка */
-    color: white; /* Белый текст кнопки */
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    background-color: #4CAF50; /* Зеленый фон кнопки */
+    color: white; /* Белый цвет текста кнопки */
+    padding: 10px 15px; /* Внутренние отступы кнопки */
+    border: none; /* Без границы */
+    border-radius: 5px; /* Закругление углов */
+    cursor: pointer; /* Указатель курсора при наведении */
 }
 
 .comment-form button:hover {
-    background-color: #333; /* Темно-серая при наведении */
+    background-color: #45a049; /* Более темный зеленый при наведении */
+}
+
+#comments {
+    margin-top: 20px; /* Отступ сверху для отображаемых комментариев */
+    text-align: left; /* Выровнено по левому краю */
 }
