@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="http://restart-tver.ru/wp-content/uploads/2017/02/пакет-макет.png" type="image/x-icon"> <!-- Логотип -->
     <link rel="stylesheet" href="style.css"> <!-- Подключение CSS файла -->
+    <title>Re-Старт</title>
 </head>
 <body>
 
@@ -30,56 +31,48 @@
                 <p>Топовая модель 2024 года.</p>
                 <p class="price">Цена: $1299</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyfTxBKz1i5IDxSpsyrseihhgkX4ieC0IIofmgTOb0Tijz1Pu.jpg">
                 <h3>iPhone 15</h3>
                 <p>Отличный выбор с новейшими функциями.</p>
                 <p class="price">Цена: $999</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyvz0gFPpuWyyXbSUvk0uYz0tmz2P86G7fPWlynfRtDa7roEXK.jpg" alt="iPhone 14 Pro">
                 <h3>iPhone 14 Pro</h3>
                 <p>Продвинутый флагман 2023 года.</p>
                 <p class="price">Цена: $1199</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyDLDp7Sefl0CfUL5L8ez2AJ02KqWFtnbcW4z0t8Pc6o4fq8J.jpg">
                 <h3>iPhone 14</h3>
                 <p>Мощный смартфон с отличной камерой.</p>
                 <p class="price">Цена: $899</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyvz0gFPpuWyyXbSUvk0uYz0tmz2P86G7fPWlynfRtDa7roEXK.jpg" alt="iPhone 13 Pro">
                 <h3>iPhone 13 Pro</h3>
                 <p>Прошлогодний флагман.</p>
                 <p class="price">Цена: $1099</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyDLDp7Sefl0CfUL5L8ez2AJ02KqWFtnbcW4z0t8Pc6o4fq8J.jpg" alt="iPhone 13">
                 <h3>iPhone 13</h3>
                 <p>Отличный выбор по разумной цене.</p>
                 <p class="price">Цена: $799</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyjLkZCz1bJXf8YK8osaBk7SdGX1dwm3dPWaDlKlnY8Dz1GIA.jpg" alt="iPhone 12 Pro">
                 <h3>iPhone 12 Pro</h3>
                 <p>Флагманская модель 2021 года.</p>
                 <p class="price">Цена: $999</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyrrrxj3nNqMXbesPY0dfi5nGC3ayVh33Phr3w4Jt9k8dcO.jpg" alt="iPhone 12">
                 <h3>iPhone 12</h3>
                 <p>Надежный и мощный телефон.</p>
                 <p class="price">Цена: $699</p>
             </div>
-
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyDLEmtEz0Fp691gz2F1yW2LRBBPn3T5z27fuuR8e9kIm10p4D.jpg" alt="iPhone SE">
                 <h3>iPhone SE (2022)</h3>
@@ -92,8 +85,8 @@
     <section class="comment-section">
         <h2>Оставьте свой отзыв</h2>
         <form class="comment-form" id="commentForm">
-            <input type="text" id="username" placeholder="Ваше имя" required>
-            <textarea id="comment" rows="4" placeholder="Ваш отзыв" required></textarea>
+            <input type="text" id="name" placeholder="Ваше имя" required>
+            <textarea rows="4" id="comment" placeholder="Ваш отзыв" required></textarea>
             <button type="submit">Отправить</button>
         </form>
         <div id="commentsList"></div>
@@ -105,46 +98,104 @@
 </footer>
 
 <script>
-    const commentForm = document.getElementById('commentForm');
-    const commentsList = document.getElementById('commentsList');
+    document.getElementById('commentForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
 
-    // Загрузка комментариев из localStorage
-    const loadComments = () => {
-        const comments = JSON.parse(localStorage.getItem('comments')) || [];
-        commentsList.innerHTML = comments.map((comment, index) => `
-            <div class="comment-item">
-                <strong>${comment.username}</strong>
-                <p>${comment.text}</p>
-                <button onclick="deleteComment(${index})">Удалить</button>
-            </div>
-        `).join('');
-    };
+        const name = document.getElementById('name').value;
+        const comment = document.getElementById('comment').value;
 
-    // Добавление нового комментария
-    commentForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const username = document.getElementById('username').value;
-        const commentText = document.getElementById('comment').value;
+        // Create a new comment element
+        const commentElement = document.createElement('div');
+        commentElement.innerHTML = `<strong>${name}:</strong> ${comment}`; // No escaping!
 
-        const comments = JSON.parse(localStorage.getItem('comments')) || [];
-        comments.push({ username, text: commentText });
-        localStorage.setItem('comments', JSON.stringify(comments));
+        // Append the comment to the comments list
+        document.getElementById('commentsList').appendChild(commentElement);
 
-        loadComments();
-        commentForm.reset(); // Очистить форму после отправки
+        // Clear the form
+        this.reset();
     });
-
-    // Удаление комментария
-    const deleteComment = (index) => {
-        const comments = JSON.parse(localStorage.getItem('comments')) || [];
-        comments.splice(index, 1);
-        localStorage.setItem('comments', JSON.stringify(comments));
-        loadComments();
-    };
-
-    // Загрузка комментариев при загрузке страницы
-    loadComments();
 </script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: url('https://i.ytimg.com/vi/XSJNsBZsd8E/maxresdefault.jpg') no-repeat center center fixed; /* Фон сайта */
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        color: black; /* Текст черный для лучшей читабельности */
+    }
+
+    header {
+        background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; /* Фон для заголовка */
+        background-size: cover;
+        padding: 3px 0; /* Уменьшено */
+        text-align: center;
+        position: fixed; /* Закреплен */
+        top: 0;
+        width: 100%;
+        z-index: 1000; /* На переднем плане */
+    }
+
+    header img {
+        width: 200px; /* Увеличен размер логотипа */
+        height: auto;
+    }
+
+    header h1 {
+        font-size: 20px; /* Уменьшен размер текста заголовка */
+        margin: 5px 0; /* Уменьшен отступ */
+    }
+
+    nav {
+        margin: 10px; /* Уменьшено */
+        text-align: center;
+    }
+
+    nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: black; /* Черный цвет текста ссылок */
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: #ff0000; /* Меняем цвет при наведении на красный */
+    }
+
+    main {
+        padding: 70px 20px 20px; /* Увеличен верхний отступ для учета фиксированного заголовка */
+        text-align: center;
+    }
+
+    footer {
+        background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; /* Фон для подвала */
+        background-size: cover;
+        color: black; /* Черный цвет текста в подвале */
+        text-align: center;
+        padding: 10px 0; /* Увеличен отступ для подвала */
+        position: relative; /* Убедитесь, что подвал не фиксированный */
+    }
+
+    .comment-section {
+        margin-top: 30px; /* Увеличен отступ сверху для комментариев */
+    }
+
+    .comment-form {
+        margin-bottom: 20px; /* Увеличен отступ снизу для формы */
+    }
+
+    #commentsList {
+        margin-top: 20px; /* Увеличен отступ сверху для списка комментариев */
+        text-align: left; /* Выравнивание по левому краю */
+    }
+
+    #commentsList div {
+        border: 1px solid #ccc; /* Добавлена рамка вокруг комментариев */
+        padding: 10px; /* Увеличены отступы внутри комментария */
+        margin-bottom: 10px; /* Увеличен отступ снизу для комментариев */
+    }
+</style>
 
 </body>
 </html>
