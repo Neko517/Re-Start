@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Search Results</h1>
+    <p id="results"></p>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="comments.html">Comments</a></li>
+        </ul>
+    </nav>
+</div>
+
+<footer>
+    <p>&copy; 2024 My Demo Website</p>
+</footer>
+
+<script>
+    var params = new URLSearchParams(window.location.search);
+    var query = params.get('query');
+    if (query) {
+        // 这里故意不做转义以触发 XSS
+        document.getElementById('results').innerHTML = "You searched for: " + query;
+    } else {
+        document.getElementById('results').textContent = "No search term provided.";
+    }
+</script>
+
+</body>
+</html>
