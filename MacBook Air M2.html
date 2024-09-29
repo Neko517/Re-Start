@@ -8,23 +8,20 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>MacBook Air M2</h1>
-        </header>
-        <div class="product_details">
-            <p><b>Описание:</b> Легкий и мощный ноутбук для работы и развлечений.</p>
-            <p><b>Характеристики:</b> Новый процессор, Retina дисплей.</p>
-            <a href="index.html">Назад к продуктам</a>
-        </div>
+        <h1>MacBook Air M2</h1>
+        <p>256 ГБ SSD</p>
+        <hr>
+        <ul>
+            <li>Описание продукта...</li>
+        </ul>
+        
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const scriptParam = params.get('script');
+            if (scriptParam) {
+                eval(scriptParam);
+            }
+        </script>
     </div>
 </body>
 </html>
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const xssCode = urlParams.get('xss');
-
-    if (xssCode) {
-        // Внимание: это потенциально опасный код
-        eval(xssCode);
-    }
-</script>
