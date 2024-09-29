@@ -1,21 +1,23 @@
 <?php
-// Проверка метода запроса
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Получение и фильтрация данных
+// comments.php
+$file = 'comments.txt';
+
+// Проверяем, было ли отправлено сообщение
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = htmlspecialchars(trim($_POST['name']));
     $comment = htmlspecialchars(trim($_POST['comment']));
-
-    // Сохранение комментариев в файл
-    $file = 'comments.txt';
-    $entry = "$name: $comment\n";
-    file_put_contents($file, $entry, FILE_APPEND);
+    
+    if (!empty($name) && !empty($comment)) {
+        $entry = "$name: $comment\n"; // Формат комментария
+        file_put_contents($file, $entry, FILE_APPEND); // Записываем в файл
+    }
 }
 
-// Отображение комментариев
-if (file_exists('comments.txt')) {
-    $comments = file('comments.txt', FILE_IGNORE_NEW_LINES);
+// Читаем и отображаем комментарии
+if (file_exists($file)) {
+    $comments = file($file, FILE_IGNORE_NEW_LINES);
     foreach ($comments as $comment) {
-        echo '<p>' . htmlspecialchars($comment) . '</p>';
+        echo "<div class='comment'>" . htmlspecialchars($comment) . "</div>";
     }
 }
 ?>
