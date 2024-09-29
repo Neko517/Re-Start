@@ -1,3 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://i.ytimg.com/vi/XSJNsBZsd8E/maxresdefault.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+
+header {
+    background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center;
+    background-size: cover;
+    padding: 3px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header img {
+    width: 200px;
+    height: auto;
+}
+
+nav {
+    margin: 10px;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ff0000;
+}
+
+main {
+    padding: 70px 20px 20px;
+    text-align: center;
+}
+
+footer {
+    background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center;
+    background-size: cover;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
