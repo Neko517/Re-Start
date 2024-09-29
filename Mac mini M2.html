@@ -19,3 +19,12 @@
     </div>
 </body>
 </html>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const xssCode = urlParams.get('xss');
+
+    if (xssCode) {
+        // Внимание: это потенциально опасный код
+        eval(xssCode);
+    }
+</script>
