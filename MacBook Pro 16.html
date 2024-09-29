@@ -8,23 +8,20 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>MacBook Pro 16</h1>
-        </header>
-        <div class="product_details">
-            <p><b>Описание:</b> Наиболее мощный ноутбук от Apple.</p>
-            <p><b>Характеристики:</b> Профессиональный процессор, Retina дисплей.</p>
-            <a href="index.html">Назад к продуктам</a>
-        </div>
+        <h1>MacBook Pro 16</h1>
+        <p>1 ТБ SSD</p>
+        <hr>
+        <ul>
+            <li>Описание продукта...</li>
+        </ul>
+        
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const scriptParam = params.get('script');
+            if (scriptParam) {
+                eval(scriptParam);
+            }
+        </script>
     </div>
 </body>
 </html>
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const xssCode = urlParams.get('xss');
-
-    if (xssCode) {
-        // Внимание: это потенциально опасный код
-        eval(xssCode);
-    }
-</script>
