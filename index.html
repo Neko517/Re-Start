@@ -3,24 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Re-Старт - Продукты Apple</title>
+    <title>Re-Старт</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Продукты Apple</h1>
-        <ul class="product-list">
-            <li><a href="Apple_Watch_SE.html">Apple Watch SE</a></li>
-            <li><a href="iPhone_14_Pro.html">iPhone 14 Pro</a></li>
-            <li><a href="MacBook_Air_M2.html">MacBook Air M2</a></li>
-            <li><a href="iPad_Pro_12.9.html">iPad Pro 12.9</a></li>
-            <li><a href="Apple_Watch_Series_8.html">Apple Watch Series 8</a></li>
-            <li><a href="AirPods_Pro_2.html">AirPods Pro 2</a></li>
-            <li><a href="MacBook_Pro_16.html">MacBook Pro 16</a></li>
-            <li><a href="iMac_24.html">iMac 24</a></li>
-            <li><a href="Apple_TV_4K.html">Apple TV 4K</a></li>
-            <li><a href="HomePod_mini.html">HomePod mini</a></li>
-        </ul>
+        <header>
+            <h1>Продукты Apple</h1>
+            <input type="text" id="search" placeholder="Поиск продуктов..." oninput="filterProducts()">
+        </header>
+        <div id="product_list">
+            <div class="product_wrap">
+                <a href="Apple_Watch_SE.html">Apple Watch SE</a>
+            </div>
+            <div class="product_wrap">
+                <a href="iPhone_14_Pro.html">iPhone 14 Pro</a>
+            </div>
+            <div class="product_wrap">
+                <a href="iPhone_14.html">iPhone 14</a>
+            </div>
+            <div class="product_wrap">
+                <a href="MacBook_Air_M2.html">MacBook Air M2</a>
+            </div>
+            <div class="product_wrap">
+                <a href="iPad_Pro_12.9.html">iPad Pro 12.9</a>
+            </div>
+            <div class="product_wrap">
+                <a href="AirPods_Pro_2.html">AirPods Pro 2</a>
+            </div>
+            <div class="product_wrap">
+                <a href="MacBook_Pro_16.html">MacBook Pro 16</a>
+            </div>
+            <div class="product_wrap">
+                <a href="iMac_24.html">iMac 24</a>
+            </div>
+            <div class="product_wrap">
+                <a href="Apple_TV_4K.html">Apple TV 4K</a>
+            </div>
+            <div class="product_wrap">
+                <a href="HomePod_mini.html">HomePod mini</a>
+            </div>
+        </div>
+
+        <div id="comments">
+            <h2>Комментарии</h2>
+            <form id="comment_form">
+                <input type="text" id="comment_input" placeholder="Ваш комментарий..." required>
+                <button type="submit">Добавить комментарий</button>
+            </form>
+            <div id="comment_list"></div>
+        </div>
     </div>
+
+    <script>
+        function filterProducts() {
+            const searchValue = document.getElementById('search').value.toLowerCase();
+            const products = document.querySelectorAll('.product_wrap');
+
+            products.forEach(product => {
+                const productName = product.innerText.toLowerCase();
+                if (productName.includes(searchValue)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        document.getElementById('comment_form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const commentInput = document.getElementById('comment_input');
+            const commentText = commentInput.value;
+
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            commentDiv.innerText = commentText;
+
+            document.getElementById('comment_list').appendChild(commentDiv);
+            commentInput.value = '';
+        });
+    </script>
 </body>
 </html>
