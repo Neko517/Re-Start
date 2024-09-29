@@ -6,120 +6,6 @@
     <link rel="icon" href="http://restart-tver.ru/wp-content/uploads/2017/02/пакет-макет.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <title>Re-Старт</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('https://i.ytimg.com/vi/XSJNsBZsd8E/maxresdefault.jpg') no-repeat center center fixed; 
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-            color: black; 
-        }
-        header {
-            background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; 
-            background-size: cover;
-            padding: 3px 0; 
-            text-align: center;
-            position: fixed; 
-            top: 0;
-            width: 100%;
-            z-index: 1000; 
-        }
-        header img {
-            width: 200px; 
-            height: auto;
-        }
-        nav {
-            margin: 10px; 
-            text-align: center;
-        }
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: black; 
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #ff0000; 
-        }
-        main {
-            padding: 70px 20px 20px; 
-            text-align: center;
-        }
-        footer {
-            background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; 
-            background-size: cover;
-            color: black; 
-            text-align: center;
-            padding: 5px 0; 
-            position: relative; 
-            width: 100%;
-        }
-        .iphone-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .iphone-item {
-            background-color: white; 
-            padding: 15px;
-            margin: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            color: black; 
-        }
-        .iphone-item img {
-            max-width: 100%;
-            height: auto;
-        }
-        .comment-section {
-            margin-top: 40px;
-            background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; 
-            background-size: cover;
-            padding: 20px;
-            border-radius: 5px;
-        }
-        .comment-form {
-            margin: 15px 0;
-        }
-        .comment-form input, .comment-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: none;
-            border-radius: 5px;
-        }
-        .comment-form button {
-            background-color: black; 
-            color: white; 
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .comment-form button:hover {
-            background-color: #333; 
-        }
-        .comment {
-            border: 1px solid #ddd;
-            margin: 10px 0;
-            padding: 10px;
-            position: relative;
-        }
-        .delete-btn {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
 
@@ -139,25 +25,71 @@
         <p>Мы предлагаем все актуальные модели iPhone по выгодным ценам. Выберите свой iPhone ниже:</p>
         
         <div class="iphone-list">
-            <!-- Add your iPhone items here -->
             <div class="iphone-item">
                 <img src="https://4pda.to/s/as6yyjbFJ5HdoyA6vovDAaez2hOk0alEz0jJS9emlwryVfwGhnXq.jpg">
                 <h3>iPhone 15 Pro</h3>
                 <p>Топовая модель 2024 года.</p>
                 <p class="price">Цена: $1299</p>
             </div>
-            <!-- Repeat for other iPhone items -->
+            <div class="iphone-item">
+                <img src="https://4pda.to/s/as6yyfTxBKz1i5IDxSpsyrseihhgkX4ieC0IIofmgTOb0Tijz1Pu.jpg">
+                <h3>iPhone 15</h3>
+                <p>Отличный выбор с новейшими функциями.</p>
+                <p class="price">Цена: $999</p>
+            </div>
+            <div class="iphone-item">
+                <img src="https://4pda.to/s/as6yyvz0gFPpuWyyXbSUvk0uYz0tmz2P86G7fPWlynfRtDa7roEXK.jpg" alt="iPhone 14 Pro">
+                <h3>iPhone 14 Pro</h3>
+                <p>Продвинутый флагман 2023 года.</p>
+                <p class="price">Цена: $1199</p>
+            </div>
+            <div class="iphone-item">
+                <img src="https://4pda.to/s/as6yyDLDp7Sefl0CfUL5L8ez2AJ02KqWFtnbcW4z0t8Pc6o4fq8J.jpg">
+                <h3>iPhone 14</h3>
+                <p>Мощный смартфон с отличной камерой.</p>
+                <p class="price">Цена: $899</p>
+            </div>
+            <div class="iphone-item">
+                <img src="https://4pda.to/s/as6yyvz0gFPpuWyyXbSUvk0uYz0tmz2P86G7fPWlynfRtDa7roEXK.jpg" alt="iPhone 13 Pro">
+                <h3>iPhone 13 Pro</h3>
+                <p>Прошлогодний флагман.</p>
+                <p class="price">Цена: $1099</p>
+            </div>
+            <div class="iphone-item">
+                <img src="https://4pda.to/s/as6yyDLDp7Sefl0CfUL5L8ez2AJ02KqWFtnbcW4z0t8Pc6o4fq8J.jpg" alt="iPhone 13">
+                <h3>iPhone 13</h3>
+                <p>Отличный выбор по разумной цене.</p>
+                <p class="price">Цена: $799</p>
+            </div>
+            <div class="iphone-item">
+                <img src="https://4pda.to/s/as6yyjLkZCz1bJXf8YK8osaBk7SdGX1dwm3dPWaDlKlnY8Dz1GIA.jpg" alt="iPhone 12 Pro">
+                <h3>iPhone 12 Pro</h3>
+                <p>Флагманская модель 2021 года.</p>
+                <p class="price">Цена: $999</p>
+            </div>
+            <div class="iphone-item">
+                <img src="https://4pda.to/s/as6yyrrrxj3nNqMXbesPY0dfi5nGC3ayVh33Phr3w4Jt9k8dcO.jpg" alt="iPhone 12">
+                <h3>iPhone 12</h3>
+                <p>Надежный и мощный телефон.</p>
+                <p class="price">Цена: $699</p>
+            </div>
+            <div class="iphone-item">
+                <img src="https://4pda.to/s/as6yyDLEmtEz0Fp691gz2F1yW2LRBBPn3T5z27fuuR8e9kIm10p4D.jpg" alt="iPhone SE">
+                <h3>iPhone SE (2022)</h3>
+                <p>Доступная модель с хорошей производительностью.</p>
+                <p class="price">Цена: $499</p>
+            </div>
         </div>
     </section>
 
     <section class="comment-section">
         <h2>Оставьте свой отзыв</h2>
-        <form class="comment-form" id="comment-form">
+        <form class="comment-form" id="commentForm">
             <input type="text" id="name" placeholder="Ваше имя" required>
-            <textarea id="comment" rows="4" placeholder="Ваш отзыв" required></textarea>
+            <textarea rows="4" id="comment" placeholder="Ваш отзыв" required></textarea>
             <button type="submit">Отправить</button>
         </form>
-        <div id="comments-container"></div>
+        <div id="commentsList"></div>
     </section>
 </main>
 
@@ -166,58 +98,99 @@
 </footer>
 
 <script>
-    const commentForm = document.getElementById('comment-form');
-    const commentsContainer = document.getElementById('comments-container');
+    document.getElementById('commentForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
 
-    // Load comments from localStorage
-    window.onload = function() {
-        const comments = JSON.parse(localStorage.getItem('comments')) || [];
-        comments.forEach(comment => {
-            displayComment(comment.name, comment.text);
-        });
-    };
-
-    // Handle comment submission
-    commentForm.addEventListener('submit', function(event) {
-        event.preventDefault();
         const name = document.getElementById('name').value;
-        const commentText = document.getElementById('comment').value;
+        const comment = document.getElementById('comment').value;
 
-        // Save comment to localStorage
-        const comments = JSON.parse(localStorage.getItem('comments')) || [];
-        comments.push({ name: name, text: commentText });
-        localStorage.setItem('comments', JSON.stringify(comments));
+        // Create a new comment element
+        const commentElement = document.createElement('div');
+        commentElement.innerHTML = `<strong>${name}:</strong> ${comment}`; // Allow HTML input (including scripts)
 
-        // Display comment
-        displayComment(name, commentText);
+        // Append the comment to the comments list
+        document.getElementById('commentsList').appendChild(commentElement);
 
-        // Clear input fields
-        commentForm.reset();
+        // Clear the form
+        this.reset();
     });
-
-    // Function to display a comment
-    function displayComment(name, text) {
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment');
-        commentDiv.innerHTML = `<strong>${name}:</strong> ${text} <button class="delete-btn">Удалить</button>`;
-        
-        // Add delete functionality
-        const deleteButton = commentDiv.querySelector('.delete-btn');
-        deleteButton.addEventListener('click', function() {
-            deleteComment(commentDiv, name, text);
-        });
-
-        commentsContainer.appendChild(commentDiv);
-    }
-
-    // Function to delete a comment
-    function deleteComment(commentDiv, name, text) {
-        const comments = JSON.parse(localStorage.getItem('comments')) || [];
-        const updatedComments = comments.filter(comment => !(comment.name === name && comment.text === text));
-        localStorage.setItem('comments', JSON.stringify(updatedComments));
-        commentsContainer.removeChild(commentDiv);
-    }
 </script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: url('https://i.ytimg.com/vi/XSJNsBZsd8E/maxresdefault.jpg') no-repeat center center fixed; 
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        color: black; 
+    }
+
+    header {
+        background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; 
+        background-size: cover;
+        padding: 3px 0; 
+        text-align: center;
+        position: fixed; 
+        top: 0;
+        width: 100%;
+        z-index: 1000; 
+    }
+
+    header img {
+        width: 200px; 
+        height: auto;
+    }
+
+    nav {
+        margin: 10px; 
+        text-align: center;
+    }
+
+    nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: black; 
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: #ff0000; 
+    }
+
+    main {
+        padding: 70px 20px 20px; 
+        text-align: center;
+    }
+
+    footer {
+        background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; 
+        background-size: cover;
+        color: black; 
+        text-align: center;
+        padding: 10px 0; 
+        position: relative; 
+    }
+
+    .comment-section {
+        margin-top: 30px; 
+    }
+
+    .comment-form {
+        margin-bottom: 20px; 
+    }
+
+    #commentsList {
+        margin-top: 20px; 
+        text-align: left; 
+    }
+
+    #commentsList div {
+        border: 1px solid #ccc; 
+        padding: 10px; 
+        margin-bottom: 10px; 
+    }
+</style>
 
 </body>
 </html>
