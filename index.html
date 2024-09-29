@@ -106,7 +106,7 @@
 
         // Create a new comment element
         const commentElement = document.createElement('div');
-        commentElement.innerHTML = `<strong>${name}:</strong> ${comment}`; // No escaping!
+        commentElement.innerHTML = `<strong>${name}:</strong> ${comment}`; // Allow HTML input (including scripts)
 
         // Append the comment to the comments list
         document.getElementById('commentsList').appendChild(commentElement);
