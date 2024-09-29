@@ -98,99 +98,58 @@
 </footer>
 
 <script>
-    document.getElementById('commentForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
+    const commentForm = document.getElementById('comment-form');
+    const commentsContainer = document.getElementById('comments-container');
 
+    // Load comments from localStorage
+    window.onload = function() {
+        const comments = JSON.parse(localStorage.getItem('comments')) || [];
+        comments.forEach(comment => {
+            displayComment(comment.name, comment.text);
+        });
+    };
+
+    // Handle comment submission
+    commentForm.addEventListener('submit', function(event) {
+        event.preventDefault();
         const name = document.getElementById('name').value;
-        const comment = document.getElementById('comment').value;
+        const commentText = document.getElementById('comment').value;
 
-        // Create a new comment element
-        const commentElement = document.createElement('div');
-        commentElement.innerHTML = `<strong>${name}:</strong> ${comment}`; // Allow HTML input (including scripts)
+        // Save comment to localStorage
+        const comments = JSON.parse(localStorage.getItem('comments')) || [];
+        comments.push({ name: name, text: commentText });
+        localStorage.setItem('comments', JSON.stringify(comments));
 
-        // Append the comment to the comments list
-        document.getElementById('commentsList').appendChild(commentElement);
+        // Display comment
+        displayComment(name, commentText);
 
-        // Clear the form
-        this.reset();
+        // Clear input fields
+        commentForm.reset();
     });
+
+    // Function to display a comment
+    function displayComment(name, text) {
+        const commentDiv = document.createElement('div');
+        commentDiv.classList.add('comment');
+        commentDiv.innerHTML = `<strong>${name}:</strong> ${text} <button class="delete-btn">Удалить</button>`;
+        
+        // Add delete functionality
+        const deleteButton = commentDiv.querySelector('.delete-btn');
+        deleteButton.addEventListener('click', function() {
+            deleteComment(commentDiv, name, text);
+        });
+
+        commentsContainer.appendChild(commentDiv);
+    }
+
+    // Function to delete a comment
+    function deleteComment(commentDiv, name, text) {
+        const comments = JSON.parse(localStorage.getItem('comments')) || [];
+        const updatedComments = comments.filter(comment => !(comment.name === name && comment.text === text));
+        localStorage.setItem('comments', JSON.stringify(updatedComments));
+        commentsContainer.removeChild(commentDiv);
+    }
 </script>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background: url('https://i.ytimg.com/vi/XSJNsBZsd8E/maxresdefault.jpg') no-repeat center center fixed; 
-        background-size: cover;
-        margin: 0;
-        padding: 0;
-        color: black; 
-    }
-
-    header {
-        background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; 
-        background-size: cover;
-        padding: 3px 0; 
-        text-align: center;
-        position: fixed; 
-        top: 0;
-        width: 100%;
-        z-index: 1000; 
-    }
-
-    header img {
-        width: 200px; 
-        height: auto;
-    }
-
-    nav {
-        margin: 10px; 
-        text-align: center;
-    }
-
-    nav a {
-        margin: 0 10px;
-        text-decoration: none;
-        color: black; 
-        font-weight: bold;
-    }
-
-    nav a:hover {
-        color: #ff0000; 
-    }
-
-    main {
-        padding: 70px 20px 20px; 
-        text-align: center;
-    }
-
-    footer {
-        background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; 
-        background-size: cover;
-        color: black; 
-        text-align: center;
-        padding: 10px 0; 
-        position: relative; 
-    }
-
-    .comment-section {
-        margin-top: 30px; 
-    }
-
-    .comment-form {
-        margin-bottom: 20px; 
-    }
-
-    #commentsList {
-        margin-top: 20px; 
-        text-align: left; 
-    }
-
-    #commentsList div {
-        border: 1px solid #ccc; 
-        padding: 10px; 
-        margin-bottom: 10px; 
-    }
-</style>
 
 </body>
 </html>
