@@ -8,23 +8,20 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>iMac 24</h1>
-        </header>
-        <div class="product_details">
-            <p><b>Описание:</b> Новый дизайн, доступен в нескольких цветах.</p>
-            <p><b>Характеристики:</b> Retina дисплей, мощный процессор.</p>
-            <a href="index.html">Назад к продуктам</a>
-        </div>
+        <h1>iMac 24</h1>
+        <p>8 ГБ RAM</p>
+        <hr>
+        <ul>
+            <li>Описание продукта...</li>
+        </ul>
+        
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const scriptParam = params.get('script');
+            if (scriptParam) {
+                eval(scriptParam);
+            }
+        </script>
     </div>
 </body>
 </html>
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const xssCode = urlParams.get('xss');
-
-    if (xssCode) {
-        // Внимание: это потенциально опасный код
-        eval(xssCode);
-    }
-</script>
