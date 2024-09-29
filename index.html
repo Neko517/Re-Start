@@ -5,121 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="http://restart-tver.ru/wp-content/uploads/2017/02/пакет-макет.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <title>Re-Старт</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('https://i.ytimg.com/vi/XSJNsBZsd8E/maxresdefault.jpg') no-repeat center center fixed; 
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-            color: black; 
-        }
-        header {
-            background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; 
-            background-size: cover;
-            padding: 3px 0; 
-            text-align: center;
-            position: fixed; 
-            top: 0;
-            width: 100%;
-            z-index: 1000; 
-        }
-        header img {
-            width: 200px; 
-            height: auto;
-        }
-        nav {
-            margin: 10px; 
-            text-align: center;
-        }
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: black; 
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #ff0000; 
-        }
-        main {
-            padding: 70px 20px 20px; 
-            text-align: center;
-        }
-        footer {
-            background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; 
-            background-size: cover;
-            color: black; 
-            text-align: center;
-            padding: 5px 0; 
-            position: relative; 
-            width: 100%;
-        }
-        .iphone-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .iphone-item {
-            background-color: white; 
-            padding: 15px;
-            margin: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            color: black; 
-        }
-        .iphone-item img {
-            max-width: 100%;
-            height: auto;
-        }
-        .comment-section {
-            margin-top: 40px;
-            background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; 
-            background-size: cover;
-            padding: 20px;
-            border-radius: 5px;
-        }
-        .comment-form {
-            margin: 15px 0;
-        }
-        .comment-form input, .comment-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: none;
-            border-radius: 5px;
-        }
-        .comment-form button {
-            background-color: black; 
-            color: white; 
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .comment-form button:hover {
-            background-color: #333; 
-        }
-        .comment {
-            border: 1px solid #ddd;
-            margin: 10px 0;
-            padding: 10px;
-            position: relative;
-        }
-        .delete-btn {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
 
@@ -206,12 +91,13 @@
 
     <section class="comment-section">
         <h2>Оставьте свой отзыв</h2>
-        <form class="comment-form" id="comment-form">
-            <input type="text" id="name" placeholder="Ваше имя" required>
-            <textarea id="comment" rows="4" placeholder="Ваш отзыв" required></textarea>
+        <form class="comment-form" id="commentForm">
+            <input type="text" placeholder="Ваше имя" required id="name">
+            <textarea rows="4" placeholder="Ваш отзыв" required id="comment"></textarea>
             <button type="submit">Отправить</button>
         </form>
-        <div id="comments-container"></div>
+        
+        <div id="comments"></div>
     </section>
 </main>
 
@@ -220,57 +106,44 @@
 </footer>
 
 <script>
-    const commentForm = document.getElementById('comment-form');
-    const commentsContainer = document.getElementById('comments-container');
+    const commentForm = document.getElementById('commentForm');
+    const commentsDiv = document.getElementById('comments');
+    let comments = [];
 
-    // Load comments from localStorage
-    window.onload = function() {
-        const comments = JSON.parse(localStorage.getItem('comments')) || [];
-        comments.forEach(comment => {
-            displayComment(comment.name, comment.text);
-        });
-    };
-
-    // Handle comment submission
     commentForm.addEventListener('submit', function(event) {
         event.preventDefault();
         const name = document.getElementById('name').value;
-        const commentText = document.getElementById('comment').value;
-
-        // Save comment to localStorage
-        const comments = JSON.parse(localStorage.getItem('comments')) || [];
-        comments.push({ name: name, text: commentText });
+        const comment = document.getElementById('comment').value;
+        
+        // Save comment
+        comments.push({ name: name, comment: comment });
         localStorage.setItem('comments', JSON.stringify(comments));
-
-        // Display comment
-        displayComment(name, commentText);
-
-        // Clear input fields
+        
+        displayComments();
         commentForm.reset();
     });
 
-    // Function to display a comment
-    function displayComment(name, text) {
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment');
-        commentDiv.innerHTML = `<strong>${name}:</strong> ${text} <button class="delete-btn">Удалить</button>`;
-        
-        // Add delete functionality
-        const deleteButton = commentDiv.querySelector('.delete-btn');
-        deleteButton.addEventListener('click', function() {
-            deleteComment(commentDiv, name, text);
+    function displayComments() {
+        commentsDiv.innerHTML = '';
+        const storedComments = JSON.parse(localStorage.getItem('comments')) || [];
+        storedComments.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.innerHTML = `<strong>${item.name}:</strong> ${item.comment} <button onclick="deleteComment(${index})">Удалить</button>`;
+            commentsDiv.appendChild(div);
         });
-
-        commentsContainer.appendChild(commentDiv);
     }
 
-    // Function to delete a comment
-    function deleteComment(commentDiv, name, text) {
-        const comments = JSON.parse(localStorage.getItem('comments')) || [];
-        const updatedComments = comments.filter(comment => !(comment.name === name && comment.text === text));
-        localStorage.setItem('comments', JSON.stringify(updatedComments));
-        commentsContainer.removeChild(commentDiv);
+    function deleteComment(index) {
+        comments.splice(index, 1);
+        localStorage.setItem('comments', JSON.stringify(comments));
+        displayComments();
     }
+
+    // Load comments on page load
+    window.onload = function() {
+        comments = JSON.parse(localStorage.getItem('comments')) || [];
+        displayComments();
+    };
 </script>
 
 </body>
