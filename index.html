@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="http://restart-tver.ru/wp-content/uploads/2017/02/пакет-макет.png" type="image/x-icon"> <!-- Логотип -->
-    <link rel="stylesheet" href="style.css"> <!-- Подключение CSS файла -->
+    <link rel="icon" href="http://restart-tver.ru/wp-content/uploads/2017/02/пакет-макет.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -91,16 +91,41 @@
 
     <section class="comment-section">
         <h2>Оставьте свой отзыв</h2>
-        <form class="comment-form">
-            <input type="text" placeholder="Ваше имя" required>
-            <textarea rows="4" placeholder="Ваш отзыв" required></textarea>
+        <form class="comment-form" method="POST" action="">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <textarea rows="4" name="comment" placeholder="Ваш отзыв" required></textarea>
             <button type="submit">Отправить</button>
         </form>
+
+        <div id="comments">
+            <h3>Комментарии:</h3>
+            <ul>
+                <?php
+                // Обработка отправленных комментариев
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $name = htmlspecialchars($_POST['name']);
+                    $comment = htmlspecialchars($_POST['comment']);
+                    $entry = "$name: $comment\n";
+                    file_put_contents('comments.txt', $entry, FILE_APPEND);
+                    header("Location: index.php"); // Перенаправление на текущую страницу
+                    exit();
+                }
+
+                // Читаем комментарии из файла
+                if (file_exists('comments.txt')) {
+                    $comments = file('comments.txt');
+                    foreach ($comments as $comment) {
+                        echo '<li>' . htmlspecialchars($comment) . '</li>';
+                    }
+                }
+                ?>
+            </ul>
+        </div>
     </section>
 </main>
 
 <footer>
-    <p>&copy; 2024 Re-Старт for Talgar Azat</p>
+    <p>&copy; 2024 Re-Старт</p>
 </footer>
 
 </body>
