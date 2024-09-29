@@ -1,121 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="http://restart-tver.ru/wp-content/uploads/2017/02/пакет-макет.png" type="image/x-icon">
+    <title>Re-Старт</title>
     <link rel="stylesheet" href="style.css">
-    <title>Re-Старт - Продукты Apple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .product_wrap {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        #search {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        #comments {
+            margin-top: 30px;
+        }
+        #comments h2 {
+            margin-bottom: 10px;
+        }
+        #comment_form {
+            margin-bottom: 10px;
+        }
+        #comment_input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 110px);
+            display: inline-block;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .comment {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Продукты Apple</h1>
+            <input type="text" id="search" placeholder="Поиск продуктов..." oninput="filterProducts()">
+        </header>
+        <div id="product_list">
+            <div class="product_wrap">
+                <p><b>iPhone 14 Pro</b></p>
+                <hr>
+                <ul>
+                    <li>128 ГБ</li>
+                </ul>
+            </div>
 
-<header>
-    <img src="http://restart-tver.ru/wp-content/uploads/2017/02/пакет-макет.png" alt="Логотип">
-</header>
+            <div class="product_wrap">
+                <p><b>iPhone 14</b></p>
+                <hr>
+                <ul>
+                    <li>256 ГБ</li>
+                </ul>
+            </div>
 
-<nav>
-    <a href="#home">Главная</a>
-    <a href="#about">О нас</a>
-    <a href="#contact">Контакты</a>
-</nav>
+            <div class="product_wrap">
+                <p><b>MacBook Air M2</b></p>
+                <hr>
+                <ul>
+                    <li>256 ГБ SSD</li>
+                </ul>
+            </div>
 
-<main>
-    <section id="home">
-        <h2>Добро пожаловать в Re-Старт!</h2>
-        <p>Мы предлагаем все актуальные модели iPhone по выгодным ценам. Выберите свой iPhone ниже:</p>
-        
-        <div class="product-list">
-            <div class="product-item">
-                <img src="https://4pda.to/s/as6yyjbFJ5HdoyA6vovDAaez2hOk0alEz0jJS9emlwryVfwGhnXq.jpg" alt="iPhone 15 Pro">
-                <h3>iPhone 15 Pro</h3>
-                <p>Топовая модель 2024 года.</p>
-                <p class="price">Цена: $1299</p>
+            <div class="product_wrap">
+                <p><b>iPad Pro 12.9</b></p>
+                <hr>
+                <ul>
+                    <li>512 ГБ</li>
+                </ul>
             </div>
-            <div class="product-item">
-                <img src="https://4pda.to/s/as6yyfTxBKz1i5IDxSpsyrseihhgkX4ieC0IIofmgTOb0Tijz1Pu.jpg" alt="iPhone 15">
-                <h3>iPhone 15</h3>
-                <p>Отличный выбор с новейшими функциями.</p>
-                <p class="price">Цена: $999</p>
+
+            <div class="product_wrap">
+                <p><b>Apple Watch Series 8</b></p>
+                <hr>
+                <ul>
+                    <li>GPS + Cellular</li>
+                </ul>
             </div>
-            <div class="product-item">
-                <img src="https://4pda.to/s/as6yyvz0gFPpuWyyXbSUvk0uYz0tmz2P86G7fPWlynfRtDa7roEXK.jpg" alt="iPhone 14 Pro">
-                <h3>iPhone 14 Pro</h3>
-                <p>Продвинутый флагман 2023 года.</p>
-                <p class="price">Цена: $1199</p>
+
+            <div class="product_wrap">
+                <p><b>AirPods Pro 2</b></p>
+                <hr>
+                <ul>
+                    <li>С активным шумоподавлением</li>
+                </ul>
             </div>
-            <div class="product-item">
-                <img src="https://4pda.to/s/as6yyDLDp7Sefl0CfUL5L8ez2AJ02KqWFtnbcW4z0t8Pc6o4fq8J.jpg" alt="iPhone 14">
-                <h3>iPhone 14</h3>
-                <p>Мощный смартфон с отличной камерой.</p>
-                <p class="price">Цена: $899</p>
+
+            <div class="product_wrap">
+                <p><b>MacBook Pro 16</b></p>
+                <hr>
+                <ul>
+                    <li>1 ТБ SSD</li>
+                </ul>
             </div>
-            <div class="product-item">
-                <img src="https://4pda.to/s/as6yyvz0gFPpuWyyXbSUvk0uYz0tmz2P86G7fPWlynfRtDa7roEXK.jpg" alt="iPhone 13 Pro">
-                <h3>iPhone 13 Pro</h3>
-                <p>Прошлогодний флагман.</p>
-                <p class="price">Цена: $1099</p>
+
+            <div class="product_wrap">
+                <p><b>iMac 24</b></p>
+                <hr>
+                <ul>
+                    <li>8 ГБ RAM</li>
+                </ul>
             </div>
-            <div class="product-item">
-                <img src="https://4pda.to/s/as6yyDLDp7Sefl0CfUL5L8ez2AJ02KqWFtnbcW4z0t8Pc6o4fq8J.jpg" alt="iPhone 13">
-                <h3>iPhone 13</h3>
-                <p>Отличный выбор по разумной цене.</p>
-                <p class="price">Цена: $799</p>
+
+            <div class="product_wrap">
+                <p><b>Apple TV 4K</b></p>
+                <hr>
+                <ul>
+                    <li>64 ГБ</li>
+                </ul>
             </div>
-            <div class="product-item">
-                <img src="https://4pda.to/s/as6yyjLkZCz1bJXf8YK8osaBk7SdGX1dwm3dPWaDlKlnY8Dz1GIA.jpg" alt="iPhone 12 Pro">
-                <h3>iPhone 12 Pro</h3>
-                <p>Флагманская модель 2021 года.</p>
-                <p class="price">Цена: $999</p>
+
+            <div class="product_wrap">
+                <p><b>HomePod mini</b></p>
+                <hr>
+                <ul>
+                    <li>Компактная умная колонка</li>
+                </ul>
             </div>
-            <div class="product-item">
-                <img src="https://4pda.to/s/as6yyrrrxj3nNqMXbesPY0dfi5nGC3ayVh33Phr3w4Jt9k8dcO.jpg" alt="iPhone 12">
-                <h3>iPhone 12</h3>
-                <p>Надежный и мощный телефон.</p>
-                <p class="price">Цена: $699</p>
+
+            <div class="product_wrap">
+                <p><b>Magic Keyboard</b></p>
+                <hr>
+                <ul>
+                    <li>С встроенным трекпадом</li>
+                </ul>
             </div>
-            <div class="product-item">
-                <img src="https://4pda.to/s/as6yyDLEmtEz0Fp691gz2F1yW2LRBBPn3T5z27fuuR8e9kIm10p4D.jpg" alt="iPhone SE">
-                <h3>iPhone SE (2022)</h3>
-                <p>Доступная модель с хорошей производительностью.</p>
-                <p class="price">Цена: $499</p>
+
+            <div class="product_wrap">
+                <p><b>iPhone SE (2022)</b></p>
+                <hr>
+                <ul>
+                    <li>64 ГБ</li>
+                </ul>
+            </div>
+
+            <div class="product_wrap">
+                <p><b>iPad Air 5</b></p>
+                <hr>
+                <ul>
+                    <li>64 ГБ</li>
+                </ul>
+            </div>
+
+            <div class="product_wrap">
+                <p><b>Apple Pencil (2-го поколения)</b></p>
+                <hr>
+                <ul>
+                    <li>Для iPad Pro и iPad Air</li>
+                </ul>
+            </div>
+
+            <div class="product_wrap">
+                <p><b>iPhone 13 Pro Max</b></p>
+                <hr>
+                <ul>
+                    <li>256 ГБ</li>
+                </ul>
+            </div>
+
+            <div class="product_wrap">
+                <p><b>Mac mini M2</b></p>
+                <hr>
+                <ul>
+                    <li>256 ГБ SSD</li>
+                </ul>
+            </div>
+
+            <div class="product_wrap">
+                <p><b>Apple Watch SE</b></p>
+                <hr>
+                <ul>
+                    <li>GPS</li>
+                </ul>
+            </div>
+
+            <div class="product_wrap">
+                <p><b>AirPods 3</b></p>
+                <hr>
+                <ul>
+                    <li>С пространственным звуком</li>
+                </ul>
+            </div>
+
+            <div class="product_wrap">
+                <p><b>MacBook Pro 14</b></p>
+                <hr>
+                <ul>
+                    <li>512 ГБ SSD</li>
+                </ul>
+            </div>
+
+            <div class="product_wrap">
+                <p><b>iMac 27</b></p>
+                <hr>
+                <ul>
+                    <li>8 ГБ RAM</li>
+                </ul>
+            </div>
+
+            <div class="product_wrap">
+                <p><b>Apple TV HD</b></p>
+                <hr>
+                <ul>
+                    <li>32 ГБ</li>
+                </ul>
+            </div>
+
+            <div class="product_wrap">
+                <p><b>Magic Mouse</b></p>
+                <hr>
+                <ul>
+                    <li>Беспроводная мышь</li>
+                </ul>
+            </div>
+
+            <div class="product_wrap">
+                <p><b>iPhone 12</b></p>
+                <hr>
+                <ul>
+                    <li>128 ГБ</li>
+                </ul>
             </div>
         </div>
-    </section>
 
-    <section class="comment-section">
-        <h2>Оставьте свой отзыв</h2>
-        <form id="comment-form" class="comment-form">
-            <input type="text" id="name" placeholder="Ваше имя" required>
-            <textarea id="comment" rows="4" placeholder="Ваш отзыв" required></textarea>
-            <button type="submit">Отправить</button>
-        </form>
-        <div id="comments-display"></div>
-    </section>
-</main>
+        <div id="comments">
+            <h2>Комментарии</h2>
+            <form id="comment_form">
+                <input type="text" id="comment_input" placeholder="Ваш комментарий..." required>
+                <button type="submit">Добавить комментарий</button>
+            </form>
+            <div id="comment_list"></div>
+        </div>
+    </div>
 
-<footer>
-    <p>&copy; 2024 Re-Старт for Talgar Azat</p>
-</footer>
+    <script>
+        function filterProducts() {
+            const searchValue = document.getElementById('search').value.toLowerCase();
+            const products = document.querySelectorAll('.product_wrap');
 
-<script>
-    document.getElementById('comment-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Предотвращаем отправку формы
+            products.forEach(product => {
+                const productName = product.querySelector('p').innerText.toLowerCase();
+                if (productName.includes(searchValue)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
 
-        const name = document.getElementById('name').value;
-        const comment = document.getElementById('comment').value;
+        document.getElementById('comment_form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const commentInput = document.getElementById('comment_input');
+            const commentText = commentInput.value;
 
-        // Создание нового элемента комментария
-        const commentDiv = document.createElement('div');
-        commentDiv.innerHTML = `<strong>${name}:</strong> ${comment}`; // Вставляем комментарий, не экранируя его
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            commentDiv.innerText = commentText;
 
-        // Добавляем комментарий в контейнер
-        document.getElementById('comments-display').appendChild(commentDiv);
-
-        // Очищаем поля формы
-        document.getElementById('name').value = '';
-        document.getElementById('comment').value = '';
-    });
-</script>
-
+            document.getElementById('comment_list').appendChild(commentDiv);
+            commentInput.value = '';
+        });
+    </script>
 </body>
 </html>
