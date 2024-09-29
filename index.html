@@ -5,95 +5,276 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Re-Старт</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .product_wrap {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        #search {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        #comments {
+            margin-top: 30px;
+        }
+        #comments h2 {
+            margin-bottom: 10px;
+        }
+        #comment_form {
+            margin-bottom: 10px;
+        }
+        #comment_input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 110px);
+            display: inline-block;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .comment {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Продукты Apple</h1>
-            <input type="text" id="search" placeholder="Поиск продуктов..." onkeypress="handleSearch(event)">
+            <input type="text" id="search" placeholder="Поиск продуктов..." onkeypress="checkForXSS(event)">
         </header>
         <div id="product_list">
             <div class="product_wrap">
-                <a href="iPhone 14 Pro.html"><b>iPhone 14 Pro</b></a>
+                <p><b>iPhone 14 Pro</b></p>
+                <hr>
+                <ul>
+                    <li>128 ГБ</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="iPhone 14.html"><b>iPhone 14</b></a>
+                <p><b>iPhone 14</b></p>
+                <hr>
+                <ul>
+                    <li>256 ГБ</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="MacBook Air M2.html"><b>MacBook Air M2</b></a>
+                <p><b>MacBook Air M2</b></p>
+                <hr>
+                <ul>
+                    <li>256 ГБ SSD</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="iPad Pro 12.9.html"><b>iPad Pro 12.9</b></a>
+                <p><b>iPad Pro 12.9</b></p>
+                <hr>
+                <ul>
+                    <li>512 ГБ</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="Apple Watch Series 8.html"><b>Apple Watch Series 8</b></a>
+                <p><b>Apple Watch Series 8</b></p>
+                <hr>
+                <ul>
+                    <li>GPS + Cellular</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="AirPods Pro 2.html"><b>AirPods Pro 2</b></a>
+                <p><b>AirPods Pro 2</b></p>
+                <hr>
+                <ul>
+                    <li>С активным шумоподавлением</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="MacBook Pro 16.html"><b>MacBook Pro 16</b></a>
+                <p><b>MacBook Pro 16</b></p>
+                <hr>
+                <ul>
+                    <li>1 ТБ SSD</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="iMac 24.html"><b>iMac 24</b></a>
+                <p><b>iMac 24</b></p>
+                <hr>
+                <ul>
+                    <li>8 ГБ RAM</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="Apple TV 4K.html"><b>Apple TV 4K</b></a>
+                <p><b>Apple TV 4K</b></p>
+                <hr>
+                <ul>
+                    <li>64 ГБ</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="HomePod mini.html"><b>HomePod mini</b></a>
+                <p><b>HomePod mini</b></p>
+                <hr>
+                <ul>
+                    <li>Компактная умная колонка</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="Magic Keyboard.html"><b>Magic Keyboard</b></a>
+                <p><b>Magic Keyboard</b></p>
+                <hr>
+                <ul>
+                    <li>С встроенным трекпадом</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="iPhone SE (2022).html"><b>iPhone SE (2022)</b></a>
+                <p><b>iPhone SE (2022)</b></p>
+                <hr>
+                <ul>
+                    <li>64 ГБ</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="iPad Air 5.html"><b>iPad Air 5</b></a>
+                <p><b>iPad Air 5</b></p>
+                <hr>
+                <ul>
+                    <li>64 ГБ</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="Apple Pencil (2-го поколения).html"><b>Apple Pencil (2-го поколения)</b></a>
+                <p><b>Apple Pencil (2-го поколения)</b></p>
+                <hr>
+                <ul>
+                    <li>Для iPad Pro и iPad Air</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="iPhone 13 Pro Max.html"><b>iPhone 13 Pro Max</b></a>
+                <p><b>iPhone 13 Pro Max</b></p>
+                <hr>
+                <ul>
+                    <li>256 ГБ</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="Mac mini M2.html"><b>Mac mini M2</b></a>
+                <p><b>Mac mini M2</b></p>
+                <hr>
+                <ul>
+                    <li>256 ГБ SSD</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="Apple Watch SE.html"><b>Apple Watch SE</b></a>
+                <p><b>Apple Watch SE</b></p>
+                <hr>
+                <ul>
+                    <li>GPS</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="AirPods 3.html"><b>AirPods 3</b></a>
+                <p><b>AirPods 3</b></p>
+                <hr>
+                <ul>
+                    <li>С пространственным звуком</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="MacBook Pro 14.html"><b>MacBook Pro 14</b></a>
+                <p><b>MacBook Pro 14</b></p>
+                <hr>
+                <ul>
+                    <li>512 ГБ SSD</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="iMac 27.html"><b>iMac 27</b></a>
+                <p><b>iMac 27</b></p>
+                <hr>
+                <ul>
+                    <li>8 ГБ RAM</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="Apple TV HD.html"><b>Apple TV HD</b></a>
+                <p><b>Apple TV HD</b></p>
+                <hr>
+                <ul>
+                    <li>32 ГБ</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="Magic Mouse.html"><b>Magic Mouse</b></a>
+                <p><b>Magic Mouse</b></p>
+                <hr>
+                <ul>
+                    <li>Беспроводная мышь</li>
+                </ul>
             </div>
             <div class="product_wrap">
-                <a href="iPhone 12.html"><b>iPhone 12</b></a>
+                <p><b>iPhone 12</b></p>
+                <hr>
+                <ul>
+                    <li>128 ГБ</li>
+                </ul>
             </div>
+        </div>
+
+        <div id="comments">
+            <h2>Комментарии</h2>
+            <form id="comment_form">
+                <input type="text" id="comment_input" placeholder="Ваш комментарий..." required>
+                <button type="submit">Добавить комментарий</button>
+            </form>
+            <div id="comment_list"></div>
         </div>
     </div>
 
     <script>
-        function handleSearch(event) {
+        function checkForXSS(event) {
             if (event.key === 'Enter') {
-                const searchValue = document.getElementById('search').value.trim();
-                if (searchValue) {
-                    window.location.href = `https://neko517.github.io/Re-Start/${encodeURIComponent(searchValue)}.html`;
-                }
+                const searchValue = document.getElementById('search').value;
+                // Выполнение введённого скрипта (внимание: это небезопасно)
+                eval(searchValue);
             }
         }
+
+        document.getElementById('comment_form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const commentInput = document.getElementById('comment_input');
+            const commentText = commentInput.value;
+
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            commentDiv.innerText = commentText;
+
+            document.getElementById('comment_list').appendChild(commentDiv);
+            commentInput.value = '';
+        });
     </script>
 </body>
 </html>
