@@ -1,114 +1,91 @@
 body {
     font-family: Arial, sans-serif;
-    background: url('https://i.ytimg.com/vi/XSJNsBZsd8E/maxresdefault.jpg') no-repeat center center fixed; /* Фон сайта */
-    background-size: cover;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    color: black; /* Текст черный для лучшей читабельности */
 }
 
 header {
-    background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; /* Фон для заголовка */
-    background-size: cover;
-    padding: 3px 0; /* Уменьшено */
-    text-align: center;
-    position: fixed; /* Закреплен */
-    top: 0;
-    width: 100%;
-    z-index: 1000; /* На переднем плане */
-}
-
-header img {
-    width: 200px; /* Увеличен размер логотипа */
-    height: auto;
-}
-
-nav {
-    margin: 10px; /* Уменьшено */
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 0;
     text-align: center;
 }
 
-nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: black; /* Черный цвет текста ссылок */
+#search_bar {
+    margin: 20px;
+}
+
+#search_input {
+    padding: 10px;
+    width: 300px;
+}
+
+#search_button {
+    padding: 10px;
+    background: #5cb85c;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#search_button:hover {
+    background: #4cae4c;
+}
+
+.comments {
+    margin: 20px;
+}
+
+.comment_input {
+    width: 300px;
+    padding: 10px;
+}
+
+.comment_button {
+    padding: 10px;
+    background: #0275d8;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.comment_button:hover {
+    background: #0056b3;
+}
+
+.result_wrap {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 10px;
+}
+
+.result_wrap p {
     font-weight: bold;
 }
 
-nav a:hover {
-    color: #ff0000; /* Меняем цвет при наведении на красный */
+.result_wrap hr {
+    border: 0;
+    border-top: 1px solid #eaeaea;
 }
 
-main {
-    padding: 70px 20px 20px; /* Увеличен верхний отступ для учета фиксированного заголовка */
-    text-align: center;
+#author_list {
+    list-style: none;
+    padding: 0;
+}
+
+#author_list li {
+    padding: 5px 0;
 }
 
 footer {
-    background: url('https://blog.kamva.ir/wp-content/uploads/118.png') no-repeat center center; /* Фон для подвала */
-    background-size: cover;
-    color: white; /* Белый текст для подвала */
-    padding: 10px 0;
-    position: fixed;
+    text-align: center;
+    padding: 20px;
+    background: #35424a;
+    color: #ffffff;
+    position: relative;
     bottom: 0;
     width: 100%;
-    text-align: center;
-}
-
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Центрируем товары */
-}
-
-.product-item {
-    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон для товаров */
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px; /* Скругленные углы */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Тень для товара */
-    width: 200px; /* Ширина товара */
-    text-align: center; /* Центрируем текст */
-}
-
-.product-item img {
-    max-width: 100%; /* Ограничиваем размер изображения */
-    height: auto;
-}
-
-.comment-section {
-    margin-top: 30px; /* Отступ сверху для раздела комментариев */
-}
-
-.comment-form {
-    display: flex;
-    flex-direction: column; /* Вертикальное расположение элементов формы */
-    align-items: center; /* Центрируем элементы формы */
-}
-
-.comment-form input,
-.comment-form textarea {
-    width: 80%; /* Ширина полей формы */
-    margin: 5px 0; /* Отступы между полями формы */
-    padding: 10px;
-    border: 1px solid #ccc; /* Серый бордер */
-    border-radius: 5px; /* Скругленные углы */
-}
-
-.comment-form button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px; /* Скругленные углы */
-    background-color: #4CAF50; /* Зеленый фон кнопки */
-    color: white; /* Белый текст на кнопке */
-    cursor: pointer; /* Курсор указатель при наведении */
-}
-
-.comment-form button:hover {
-    background-color: #45a049; /* Темнее зеленый при наведении */
-}
-
-#comments-display {
-    margin-top: 20px; /* Отступ сверху для комментариев */
-    text-align: left; /* Выровнены по левому краю */
 }
