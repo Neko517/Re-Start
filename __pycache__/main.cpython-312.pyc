@@ -1,1 +1,35 @@
-
+Л
+    ёхfu  г                   уЁ   — d dl mZmZ d dlmZ  e«       Zej
+                  de¬«      d„ «       Z ej                  de¬«       ed «      fde	fd	„«       Z
+y
+)
+й    )Ъ FastAPIЪForm)ЪHTMLResponseъ/)Ъresponse_classc               ѓ   у   K  — y­w)NaT  
+    <html>
+        <body>
+            <h2>Simple XSS Test Page</h2>
+            <form action="/submit" method="post">
+                <label for="name">Enter text:</label>
+                <input type="text" id="name" name="name" />
+                <input type="submit" value="Submit" />
+            </form>
+        </body>
+    </html>
+    © r	   у    ъ-C:\Users\BOTA\PycharmProjects\malware\main.pyЪget_formr       s
+   и шЂ р
+щs   ‚z /submit.Ъnamec              ѓ   у   K  — d| › dќS ­w)NzN
+    <html>
+        <body>
+            <h2>Submitted Text</h2>
+            <p>u„   </p> <!-- Р’ СЌС‚РѕР№ СЃС‚СЂРѕРєРµ XSS-СѓСЏР·РІРёРјРѕСЃС‚СЊ -->
+            <a href="/">Go back</a>
+        </body>
+    </html>
+    r	   )r
+   s    r
+   Ъ
+submit_formr      s!   и шЂ рр €vр р	р щs   ‚ 	N)
+Ъ fastapir   r   Ъfastapi.responsesr   ЪappЪgetr   ЪpostЪstrr   r	   r
+   r
+   ъ<module>r      sb   рЯ !Э *б
+ѓiЂр ‡Ѓ€\ЂУ*су +рр ‡Ѓ€) LЂУ1Щ"& sЈ)с 	Cт 	у 2с	r
+   
